@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 5rem 2rem;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+
+.container-2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: white;
+}
+
+.wrap {
+  width: 100%;
+  padding: 5rem 0;
+  margin-bottom: 20px;
+  text-align: center;
+  color: black;
+}
+
+.title {
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
+.data {
+  font-size: 50px;
+  font-weight: semibold;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    width: 40%;
+    margin: 0 5%;
+  }
+
+  .title {
+    font-size: 60px;
+    margin-bottom: 50px;
+  }
+}
