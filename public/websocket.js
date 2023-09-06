@@ -1,4 +1,7 @@
 let mqttClient;
+let limitMessage = 0;
+
+import { dataMonitor } from "../data.js";
 
 window.onload = () => {
   connectMqtt();
@@ -44,8 +47,24 @@ const connectMqtt = () => {
   });
 
   mqttClient.on("message", (topic, message, packet) => {
+    if (limitMessage > 9) {
+      dataMonitor.hum.splice(0, dataMonitor.hum.length);
+      dataMonitor.temp.splice(0, dataMonitor.temp.length);
+      dataMonitor.updatedAt.splice(0, dataMonitor.updatedAt.length);
+      limitMessage = 0;
+    }
+
     const msg = JSON.parse(message);
     document.getElementById("temp").innerHTML = msg.temp.toFixed(0);
     document.getElementById("hum").innerHTML = msg.hum.toFixed(0);
+
+    dataMonitor.humShow = msg.hum.toFixed(0);
+    dataMonitor.hum.push(msg.hum.toFixed(0));
+    dataMonitor.tempShow = msg.temp.toFixed(0);
+    dataMonitor.temp.push(msg.temp.toFixed(0));
+    dataMonitor.updatedAt.push(msg.updatedAt);
+
+    console.log(dataMonitor);
+    limitMessage++;
   });
 };

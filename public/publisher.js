@@ -10,6 +10,7 @@ setInterval(() => {
   let message = JSON.stringify({
     hum: Math.random() * 100,
     temp: Math.random() * 100,
+    updatedAt: new Date().toISOString(),
   });
   client.publish("monitor/device1", message);
-}, 1000);
+}, 10000);

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>MQTT Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/mqtt@5.0.4/dist/mqtt.min.js"></script>
   </head>
   <body>
@@ -19,7 +20,40 @@
           <h2 class="data" id="hum">-</h2>
         </div>
       </div>
+      <div>
+        <canvas id="chart_temp"></canvas>
+      </div>
     </div>
     <script src="websocket.js" type="module"></script>
+    <script type="module">
+      import { dataMonitor } from "../data.js";
+      const ctx = document.getElementById("chart_temp");
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: dataMonitor.updatedAt,
+          datasets: [
+            {
+              label: "temp",
+              data: dataMonitor.temp,
+              borderWidth: 1,
+            },
+            {
+              label: "hum",
+              data: dataMonitor.hum,
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: false,
+            },
+          },
+        },
+      });
+    </script>
   </body>
 </html>
