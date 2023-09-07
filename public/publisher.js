@@ -13,4 +13,4 @@ setInterval(() => {
     updatedAt: new Date().toISOString(),
   });
   client.publish("monitor/device1", message);
-}, 1000);
+}, 2000);
