@@ -56,9 +56,9 @@
       });
 
       setInterval(() => {
-        myChart.data.labels.push(dataMonitor.updatedAtShow);
-        myChart.data.datasets[0].data.push(dataMonitor.tempShow);
-        myChart.data.datasets[1].data.push(dataMonitor.humShow);
+        myChart.data.labels.push(dataMonitor.updatedAt);
+        myChart.data.datasets[0].data.push(dataMonitor.temp);
+        myChart.data.datasets[1].data.push(dataMonitor.hum);
         myChart.update();
       }, 2000);
     </script>

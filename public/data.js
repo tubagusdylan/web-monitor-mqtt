@@ -1,8 +1,5 @@
 export const dataMonitor = {
-  temp: [],
-  hum: [],
-  tempShow: 0,
-  humShow: 0,
-  updatedAt: [],
-  updatedAtShow: 0,
+  temp: 0,
+  hum: 0,
+  updatedAt: 0,
 };
