@@ -26,22 +26,22 @@
     </div>
     <script src="websocket.js" type="module"></script>
     <script type="module">
-      import { dataMonitor } from "../data.js";
+      import { dataMonitor } from "./data.js";
       const ctx = document.getElementById("chart_temp");
 
-      new Chart(ctx, {
+      const myChart = new Chart(ctx, {
         type: "line",
         data: {
-          labels: dataMonitor.updatedAt,
+          labels: [],
           datasets: [
             {
               label: "temp",
-              data: dataMonitor.temp,
+              data: [],
               borderWidth: 1,
             },
             {
               label: "hum",
-              data: dataMonitor.hum,
+              data: [],
               borderWidth: 1,
             },
           ],
@@ -54,6 +54,13 @@
           },
         },
       });
+
+      setInterval(() => {
+        myChart.data.labels.push(dataMonitor.updatedAtShow);
+        myChart.data.datasets[0].data.push(dataMonitor.tempShow);
+        myChart.data.datasets[1].data.push(dataMonitor.humShow);
+        myChart.update();
+      }, 2000);
     </script>
   </body>
 </html>

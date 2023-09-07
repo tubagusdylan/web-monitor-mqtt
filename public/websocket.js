@@ -11,7 +11,7 @@ const connectMqtt = () => {
   const clientId = "client" + Math.random().toString(36).substring(7);
 
   // Change this to point to your MQTT broker
-  const host = "wss://broker.emqx.io:8083/mqtt";
+  const host = "wss://broker.emqx.io:8084/mqtt";
 
   const options = {
     keepalive: 60,

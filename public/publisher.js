@@ -1,6 +1,6 @@
 import mqtt from "mqtt";
 
-let client = mqtt.connect("ws://broker.emqx.io:8083/mqtt");
+let client = mqtt.connect("wss://broker.emqx.io:8084/mqtt");
 
 client.on("connect", () => {
   console.log("Mqtt connected");
@@ -11,6 +11,7 @@ setInterval(() => {
     hum: Math.random() * 100,
     temp: Math.random() * 100,
     updatedAt: new Date().toISOString(),
+    updatedAtShow: new Date().toISOString(),
   });
   client.publish("monitor/device1", message);
-}, 2000);
+}, 1000);

@@ -4,4 +4,5 @@ export const dataMonitor = {
   tempShow: 0,
   humShow: 0,
   updatedAt: [],
+  updatedAtShow: 0,
 };
