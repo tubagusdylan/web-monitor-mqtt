@@ -1,7 +1,7 @@
 let mqttClient;
 let limitMessage = 0;
 
-import { dataMonitor } from "../data.js";
+import { dataMonitor } from "./data.js";
 
 window.onload = () => {
   connectMqtt();
